@@ -1,0 +1,2 @@
+module SpendingBudgetsHelper
+end

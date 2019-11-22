@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Budget type:</strong>
+  <%= @spending_budget.budget_type %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @spending_budget.category %>
+</p>
+
+<p>
+  <strong>Budget classification:</strong>
+  <%= @spending_budget.budget_classification %>
+</p>
+
+<p>
+  <strong>Budget classification amount:</strong>
+  <%= @spending_budget.budget_classification_amount %>
+</p>
+
+<p>
+  <strong>Budget daily amount:</strong>
+  <%= @spending_budget.budget_daily_amount %>
+</p>
+
+<%= link_to 'Edit', edit_spending_budget_path(@spending_budget) %> |
+<%= link_to 'Back', spending_budgets_path %>

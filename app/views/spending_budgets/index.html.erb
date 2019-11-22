@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spending Budgets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Budget type</th>
+      <th>Category</th>
+      <th>Budget classification</th>
+      <th>Budget classification amount</th>
+      <th>Budget daily amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spending_budgets.each do |spending_budget| %>
+      <tr>
+        <td><%= spending_budget.budget_type %></td>
+        <td><%= spending_budget.category %></td>
+        <td><%= spending_budget.budget_classification %></td>
+        <td><%= spending_budget.budget_classification_amount %></td>
+        <td><%= spending_budget.budget_daily_amount %></td>
+        <td><%= link_to 'Show', spending_budget %></td>
+        <td><%= link_to 'Edit', edit_spending_budget_path(spending_budget) %></td>
+        <td><%= link_to 'Destroy', spending_budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spending Budget', new_spending_budget_path %>

@@ -1,0 +1,47 @@
+<%= form_with(model: spending_budget, local: true) do |form| %>
+  <% if spending_budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spending_budget.errors.count, "error") %> prohibited this spending_budget from being saved:</h2>
+
+      <ul>
+        <% spending_budget.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="dropdown">
+    <%= form.label :budget_type %>
+    <!-- <%= form.text_field :budget_type %> -->
+    <%= form.select :budget_type, ['Income', 'Expense']%>
+  </div>
+  <br \>
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div class="dropdown">
+    <%= form.label :budget_classification %>
+   <!-- <%= form.text_field :budget_classification %> -->
+   <%= form.select :budget_classification, ['Weekly', 'Monthly','Quarterly','Yearly']%>
+  </div>
+<br \>
+
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :budget_classification_amount %>
+  </div>
+  
+  <!-- This is commented as I do not want to show the daily amount. This needs to be calculated
+  <div class="field">
+    <%= form.label :budget_daily_amount %>
+    <%= form.text_field :budget_daily_amount %>
+  </div>
+  -->
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

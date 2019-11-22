@@ -1,0 +1,35 @@
+<h1>My Finances ... My Budget</h1>
+<%= link_to 'Add Transactions', new_transaction_path %>
+<br \>
+<br \>
+<%= link_to 'View Your Ledger', transactions_path %>
+<br \>
+<br \>
+
+<%= link_to 'Get Transaction Report', search_transactions_path() %>
+<br \>
+<br \>
+<%= flash[:notice] %>
+<div>
+  <h4>Import data! </h4>
+  <%= form_tag import_spending_budgets_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import from file" %>
+  <% end %>
+</div>
+<br \>
+<br \>
+<%= link_to 'Add Your Budget', new_spending_budget_path %>
+<br \>
+<br \>
+<%= link_to 'View All Budget Set', spending_budgets_path %>
+<br \>
+<br \>
+<br \>
+<%= form_tag("/transactions/search", method: "get") do %>
+  <%= date_field("t", "start") %>
+  <%= date_field("t", "end") %>
+
+  <%= submit_tag("Click!! Get Transaction Data for the Range") %>
+<% end %>
+

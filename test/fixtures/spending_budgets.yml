@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  budget_type: MyString
+  category: MyString
+  budget_classification: MyString
+  budget_classification_amount: 9.99
+  budget_daily_amount: 9.99
+
+two:
+  budget_type: MyString
+  category: MyString
+  budget_classification: MyString
+  budget_classification_amount: 9.99
+  budget_daily_amount: 9.99
