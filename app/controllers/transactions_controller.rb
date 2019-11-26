@@ -8,6 +8,12 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.order(:transaction_date) #.order method sorts by the transaction date
   end
 
+  def import
+    Transaction.my_import(params[:file])
+    #my_import(params[:file],current_user.id)
+    redirect_to budgeter_index_url, notice: "Successfully Imported Transaction Data!!!"
+  end
+
   # GET /transactions/1
   # GET /transactions/1.json
   def show
@@ -64,7 +70,7 @@ class TransactionsController < ApplicationController
 
 
 
-  def search
+  def report_with_daterange
 
     puts "Hi, the start date passed is " + params[:t][:start]
     puts "Hi, the end date passed is " + params[:t][:end]  

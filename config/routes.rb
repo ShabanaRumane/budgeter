@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  resources :users
   root 'budgeter#index', as: 'budgeter_index'
   # get 'transactions/trans'
+  get 'expense_vs_budget', to: 'budgeter#expense_vs_budget', as: 'expense_vs_budget'
+  get 'transactions/import' => 'transactions#my_import'
   get 'spending_budgets/import' => 'spending_budgets#my_import'
+  
   resources :spending_budgets do
     collection {post :import}
   end
@@ -9,7 +13,8 @@ Rails.application.routes.draw do
 
   resources :transactions do
     collection do
-      get 'search'
+      get 'report_with_daterange'
+      
     end
   end
   

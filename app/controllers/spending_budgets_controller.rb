@@ -10,7 +10,7 @@ class SpendingBudgetsController < ApplicationController
   def import
     SpendingBudget.my_import(params[:file])
     #my_import(params[:file],current_user.id)
-    redirect_to budgeter_index_url, notice: "Successfully Imported Data!!!"
+    redirect_to budgeter_index_url, notice: "Successfully Imported Budget Data!!!"
   end
   # GET /spending_budgets/1
   # GET /spending_budgets/1.json
@@ -21,7 +21,7 @@ class SpendingBudgetsController < ApplicationController
   def new
     @spending_budget = SpendingBudget.new
   end
-
+  
   # GET /spending_budgets/1/edit
   def edit
   end

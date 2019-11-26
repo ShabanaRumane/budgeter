@@ -6,13 +6,23 @@
 <br \>
 <br \>
 
-<%= link_to 'Get Transaction Report', search_transactions_path() %>
+
 <br \>
 <br \>
 <%= flash[:notice] %>
 <div>
-  <h4>Import data! </h4>
+  <h4>Import Budget data! </h4>
   <%= form_tag import_spending_budgets_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import from file" %>
+  <% end %>
+</div>
+<br \>
+<br \>
+
+<div>
+  <h4>Import Transaction data! </h4>
+  <%= form_tag transactions_import_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import from file" %>
   <% end %>
@@ -26,10 +36,56 @@
 <br \>
 <br \>
 <br \>
-<%= form_tag("/transactions/search", method: "get") do %>
+<%= form_tag("/transactions/report_with_daterange", method: "get") do %>
   <%= date_field("t", "start") %>
   <%= date_field("t", "end") %>
 
   <%= submit_tag("Click!! Get Transaction Data for the Range") %>
 <% end %>
 
+<p>
+<%= form_tag("/expense_vs_budget", method: "get") do %>
+  <%= date_field("t", "s_date") %>
+  <%= date_field("t", "e_date") %>
+
+  <%= submit_tag("Click!! Get expense vs budget") %>
+<% end %>
+
+<p>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<%= javascript_tag do -%>
+ 
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart2);
+
+  
+  function drawChart2() {
+
+    var data2 = JSON.parse('<%= @expenses.to_json.html_safe -%>');
+    data2 = [['Category', 'Amount']].concat(data2);
+    data2 = google.visualization.arrayToDataTable(data2);
+    var piechart_options = {title:'Pie Chart: My expenses',
+                    width:400,
+                    height:300};
+    var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+    piechart.draw(data2, piechart_options);
+
+    var barchart_options = {title:'Barchart: My expenses',
+                    width:400,
+                    height:300,
+                    legend: 'none'};
+    var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+    barchart.draw(data2, barchart_options);
+  }
+  
+<% end -%>
+<br/>
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+      <tr>
+        <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>

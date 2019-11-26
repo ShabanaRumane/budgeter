@@ -32,7 +32,18 @@ class SpendingBudget < ApplicationRecord
       self.budget_daily_amount = self.budget_classification_amount
     end
 
+    # def self.get_budget_for_daterange(s_date,e_date)
+    #   SpendingBudget.select("category, (budget_daily_amount)  * (DATEDIFF(:e_date, :s_date)+1) as amount ").where("budget_type = 'Expense' and transaction_date >= :s_date and transaction_date <= :e_date", {:s_date: s_date, :e_date: e_date}).map do |row|
+    #     [
+    #       row['category'],
+    #       row.amount.to_f
+    #     ]
+    #   end
+  
+    # end
   end
+
+
 
 
 end
