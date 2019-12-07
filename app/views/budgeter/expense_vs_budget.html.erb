@@ -17,7 +17,7 @@
     <% @expense_vs_budget_array.each do |b| %>
       
       
-      <tr>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= b[0] %></td>
         <td><%= b[1] %></td>
         <td><%= b[2] %></td>
@@ -31,3 +31,4 @@
 
 <br>
 
+<li><%= link_to 'Home', budgeter_index_path %></li>

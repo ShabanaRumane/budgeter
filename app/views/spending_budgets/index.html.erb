@@ -16,7 +16,7 @@
 
   <tbody>
     <% @spending_budgets.each do |spending_budget| %>
-      <tr>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= spending_budget.budget_type %></td>
         <td><%= spending_budget.category %></td>
         <td><%= spending_budget.budget_classification %></td>
@@ -32,4 +32,5 @@
 
 <br>
 
-<%= link_to 'New Spending Budget', new_spending_budget_path %>
+<li><%= link_to 'New Spending Budget', new_spending_budget_path %> </li>
+<li><%= link_to 'Home', budgeter_index_path %></li>

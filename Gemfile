@@ -31,6 +31,7 @@ gem 'activerecord-import'
 
 ##################
 
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -60,3 +61,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'shopify-cloud', source: 'https://packages.shopify.io/shopify/gems'
+#adding gem to add polaris
+#source 'https://packages.shopify.io/shopify/gems' do
+#  gem 'polaris', '18.9.1' # change version number to latest
+#end

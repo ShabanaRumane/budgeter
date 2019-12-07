@@ -1,0 +1,7 @@
+transaction_type,category,location,transaction_date,transaction_amount
+Expense,Sports,Soccer Club,'2019-01-01', 300.0
+Expense,Sports,Soccer Club,'2019-04-01', 300.0
+Expense,Sports,Soccer Club,'2019-07-01', 300.0
+Expense,Sports,Soccer Club,'2019-10-01', 300.0
+Expense,Tia learning,'SummerCamp','2019-06-15', 350.0
+Expense,Medicines,'Mom - in cash','2019-08-25', 70.0

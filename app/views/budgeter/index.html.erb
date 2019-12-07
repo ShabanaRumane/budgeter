@@ -1,58 +1,60 @@
-<h1>My Finances ... My Budget</h1>
-<%= link_to 'Add Transactions', new_transaction_path %>
-<br \>
-<br \>
-<%= link_to 'View Your Ledger', transactions_path %>
-<br \>
-<br \>
-
-
-<br \>
-<br \>
 <%= flash[:notice] %>
-<div>
-  <h4>Import Budget data! </h4>
-  <%= form_tag import_spending_budgets_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import from file" %>
-  <% end %>
+
+<div id="budget">
+  <h2>Budget</h2>
+  <%= link_to 'Add Your Budget', new_spending_budget_path %>
+  <br \>
+  <br \>
+  <%= link_to 'View All Budget Set', spending_budgets_path %>
+  <br \>
+  <br \>
+  <div>
+    <h4>Import Budget data! </h4>
+    <%= form_tag import_spending_budgets_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import from file" %>
+    <% end %>
+  </div>
 </div>
-<br \>
-<br \>
 
-<div>
-  <h4>Import Transaction data! </h4>
-  <%= form_tag transactions_import_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import from file" %>
-  <% end %>
+
+<div id="trans">
+  <h2>Transactions</h2>
+  <%= link_to 'Add Transactions', new_transaction_path %>
+  <br \>
+  <br \>
+  <%= link_to 'View Your Ledger', transactions_path %>
+  <br \>
+  <br \>
+  <div>
+    <h4>Import Transaction data! </h4>
+    <%= form_tag transactions_import_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import from file" %>
+    <% end %>
+  </div>
 </div>
-<br \>
-<br \>
-<%= link_to 'Add Your Budget', new_spending_budget_path %>
-<br \>
-<br \>
-<%= link_to 'View All Budget Set', spending_budgets_path %>
-<br \>
-<br \>
-<br \>
-<%= form_tag("/transactions/report_with_daterange", method: "get") do %>
-  <%= date_field("t", "start") %>
-  <%= date_field("t", "end") %>
 
-  <%= submit_tag("Click!! Get Transaction Data for the Range") %>
-<% end %>
 
-<p>
-<%= form_tag("/expense_vs_budget", method: "get") do %>
-  <%= date_field("t", "s_date") %>
-  <%= date_field("t", "e_date") %>
+<div id="reps">
+  <h2> Reports </h2>
+  <%= form_tag("/transactions/report_with_daterange", method: "get") do %>
+    <%= date_field("t", "start") %>
+    <%= date_field("t", "end") %>
 
-  <%= submit_tag("Click!! Get expense vs budget") %>
-<% end %>
+    <%= submit_tag("Click!! Get Transaction Data for the Range") %>
+  <% end %>
 
-<p>
+  <p>
+  <%= form_tag("/expense_vs_budget", method: "get") do %>
+    <%= date_field("t", "s_date") %>
+    <%= date_field("t", "e_date") %>
 
+    <%= submit_tag("Click!! Get expense vs budget") %>
+  <% end %>
+
+  <p>
+</div>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <%= javascript_tag do -%>
